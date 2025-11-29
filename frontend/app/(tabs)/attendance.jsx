@@ -126,11 +126,11 @@ export default function AttendanceScreen() {
           <Picker
             selectedValue={selectedBatch}
             onValueChange={(value) => setSelectedBatch(value)}
-            dropdownIconColor="#bae6fd"
+            dropdownIconColor="#38bdf8" 
             style={styles.picker}
           >
             {batches.map((batch) => (
-              <Picker.Item key={batch._id} label={batch.name} value={batch._id} color="#0f172a" />
+              <Picker.Item key={batch._id} label={batch.name} value={batch._id} color="#f8fafc" /> 
             ))}
           </Picker>
         </View>
@@ -139,7 +139,7 @@ export default function AttendanceScreen() {
           value={date}
           onChangeText={setDate}
           placeholder="YYYY-MM-DD"
-          placeholderTextColor="#94a3b8"
+          placeholderTextColor="#ffffffff"
         />
       </View>
 
@@ -159,7 +159,11 @@ export default function AttendanceScreen() {
           data={rows}
           keyExtractor={(item) => item.student._id}
           refreshControl={
-            <RefreshControl refreshing={refreshing} onRefresh={() => fetchAttendance({ silent: true })} />
+            <RefreshControl 
+                refreshing={refreshing} 
+                onRefresh={() => fetchAttendance({ silent: true })} 
+                tintColor="#38bdf8" 
+            />
           }
           contentContainerStyle={{ paddingBottom: 120 }}
           ListEmptyComponent={
@@ -209,9 +213,24 @@ export default function AttendanceScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#030712',
+    backgroundColor: '#0b1120', 
     padding: 16,
     gap: 12,
+  },
+  homeButton: {
+    backgroundColor: '#0f172a', 
+    borderRadius: 14,
+    padding: 12,
+    alignItems: 'center',
+    marginBottom: 12, 
+    borderWidth: 1, 
+    borderColor: '#1d4ed8', 
+
+  },
+  homeButtonText: {
+    color: '#22d3ee', 
+    fontWeight: '600',
+    fontSize: 14,
   },
   filters: {
     flexDirection: 'row',
@@ -221,16 +240,20 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#0f172a',
     borderRadius: 14,
+    borderWidth: 1, 
+    borderColor: '#1d4ed8', 
   },
   picker: {
-    color: '#f8fafc',
+    color: '#ffffffff',
   },
   input: {
     width: 150,
     backgroundColor: '#0f172a',
     borderRadius: 14,
     paddingHorizontal: 14,
-    color: '#f8fafc',
+    color: '#ffffffff',
+    borderWidth: 1, 
+    borderColor: '#1d4ed8', 
   },
   summaryRow: {
     flexDirection: 'row',
@@ -242,9 +265,11 @@ const styles = StyleSheet.create({
     borderRadius: 18,
     padding: 12,
     alignItems: 'center',
+    backgroundColor: '#0f172a',
+    
   },
   summaryValue: {
-    color: '#f8fafc',
+    color: '#ffffffff',
     fontSize: 22,
     fontWeight: '700',
   },
@@ -261,15 +286,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     borderWidth: 1,
-    borderColor: '#1e293b',
+    borderColor: '#1d4ed8',
   },
   name: {
-    color: '#f8fafc',
+    color: '#ffffffff',
     fontSize: 16,
     fontWeight: '600',
   },
   meta: {
-    color: '#94a3b8',
+    color: '#f7faffff',
     marginTop: 2,
   },
   statusGroup: {
@@ -279,40 +304,28 @@ const styles = StyleSheet.create({
   statusButton: {
     borderRadius: 999,
     borderWidth: 1,
-    borderColor: '#475569',
+    borderColor: '#1d4ed8',
     paddingVertical: 6,
     paddingHorizontal: 12,
   },
   statusLabel: {
-    color: '#cbd5f5',
+    color: '#ffffffff',
     fontWeight: '600',
   },
   emptyState: {
-    color: '#94a3b8',
+    color: '#ffffffff',
     textAlign: 'center',
     marginTop: 60,
   },
   saveButton: {
-    backgroundColor: '#22c55e',
+    backgroundColor: '#22c55e', 
     borderRadius: 18,
     padding: 16,
     alignItems: 'center',
   },
   saveButtonText: {
-    color: '#021016',
+    color: '#ffffffff',
     fontWeight: '700',
     fontSize: 16,
   },
-  homeButton: {
-    backgroundColor: '#1e293b', 
-    borderRadius: 14,
-    padding: 12,
-    alignItems: 'center',
-    marginBottom: 12, 
-  },
-  homeButtonText: {
-    color: '#f8fafc',
-    fontWeight: '600',
-    fontSize: 14,
-  }
 });
