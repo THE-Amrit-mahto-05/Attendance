@@ -1,4 +1,5 @@
 import { Picker } from '@react-native-picker/picker';
+import { Link } from 'expo-router';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import {
   ActivityIndicator,
@@ -115,6 +116,11 @@ export default function AttendanceScreen() {
 
   return (
     <View style={styles.container}>
+      <Link href="/(tabs)/" asChild>
+        <TouchableOpacity style={styles.homeButton}>
+          <Text style={styles.homeButtonText}> Dashboard</Text>
+        </TouchableOpacity>
+      </Link>
       <View style={styles.filters}>
         <View style={styles.pickerWrapper}>
           <Picker
@@ -297,4 +303,16 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     fontSize: 16,
   },
+  homeButton: {
+    backgroundColor: '#1e293b', 
+    borderRadius: 14,
+    padding: 12,
+    alignItems: 'center',
+    marginBottom: 12, 
+  },
+  homeButtonText: {
+    color: '#f8fafc',
+    fontWeight: '600',
+    fontSize: 14,
+  }
 });
